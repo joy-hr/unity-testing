@@ -1,8 +1,6 @@
 using UnityEngine;
 
-// https://gist.github.com/mstevenson/4325117
-public class MonoBehaviourSingleton<T> : MonoBehaviour
-    where T : Component
+public class MonoBehaviourSingleton<T> : MonoBehaviour where T : Component
 {
     private static T _instance;
     public static T Instance
@@ -11,12 +9,12 @@ public class MonoBehaviourSingleton<T> : MonoBehaviour
         {
             if (_instance == null)
             {
-                var objs = FindObjectsOfType(typeof(T)) as T[];
+                T[] objs = FindObjectsOfType<T>();
                 if (objs.Length > 0)
                     _instance = objs[0];
                 if (objs.Length > 1)
                 {
-                    Debug.LogError("There is more than one " + typeof(T).Name + " in the scene.");
+                    Debug.LogError($"There is more than one {typeof(T).Name} in the scene.");
                 }
                 if (_instance == null)
                 {
@@ -30,18 +28,16 @@ public class MonoBehaviourSingleton<T> : MonoBehaviour
     }
 }
 
-
-public class MonoBehaviourSingletonPersistent<T> : MonoBehaviour
-    where T : Component
+public class MonoBehaviourSingletonPersistent<T> : MonoBehaviour where T : Component
 {
     public static T Instance { get; private set; }
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         if (Instance == null)
         {
             Instance = this as T;
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
