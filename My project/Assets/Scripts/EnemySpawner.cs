@@ -2,37 +2,50 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    float time = 0;
+    private float _spawnTimer = 0;
 
     [Tooltip("The rate at which the enemies spawn in seconds")]
     [Min(0)]
-    public float intervalSeconds = 1;
+    public float SpawnIntervalSeconds = 1;
 
     [Tooltip("The size of the gap between the enemies in pixels")]
     [Min(0)]
-    public int gapOffset = 100;
+    public int GapOffset = 100;
 
     [Tooltip("The amount of columns to spawn from")]
     [Range(0, 4)]
-    public int columns = 4;
+    public int Columns = 4;
 
-    public GameObject[] enemyPrefabs;
-    public GameObject spawner;
-
-    void Update()
+    public GameObject[] EnemyPrefabs;
+    private void Update()
     {
-        if (time >= intervalSeconds && enemyPrefabs.Length > 0)
-        {
-            time = 0;
+        _spawnTimer += Time.deltaTime;
 
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(spawner.transform.position);
-            Debug.Log(screenPosition);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenPosition.x + (Random.Range(0, columns) - columns / 2) * gapOffset, screenPosition.y, screenPosition.z));
-            GameObject enemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length - 1)];
+        if (_spawnTimer >= SpawnIntervalSeconds && EnemyPrefabs.Length > 0)
+        {
+            _spawnTimer = 0;
+
+            // Here, we first convert to screen space so we can add pixel-based offset.
+            // This is then converted back into a world position so the enemy can be instantiated with a new position.
+
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+            Vector3 worldPosition = GetRandomWorldPosition(screenPosition);
+
+            GameObject enemy = GetRandomEnemyPrefab();
 
             Instantiate(enemy, worldPosition, Quaternion.identity);
         }
+    }
 
-        time += Time.deltaTime;
+    private Vector3 GetRandomWorldPosition(Vector3 screenPosition)
+    {
+        float randomXOffset = (Random.Range(0, Columns) - Columns / 2f) * GapOffset;
+        return Camera.main.ScreenToWorldPoint(new Vector3(screenPosition.x + randomXOffset, screenPosition.y, screenPosition.z));
+    }
+
+    private GameObject GetRandomEnemyPrefab()
+    {
+        return EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)];
     }
 }
