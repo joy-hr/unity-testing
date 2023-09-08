@@ -6,35 +6,32 @@ using UnityEngine.InputSystem;
 public class TapEnemy : Enemy
 {
 	[Min(0)]
-	public int movementSpeed = 8;
+	public float movementSpeed = 8f; // Changed type to float for smoother movement
 
-	void OnEnable()
+	private void OnEnable()
 	{
 		inputManager.OnStartTouch += OnTouch;
 	}
 
-	void Update()
+	private void OnDisable() // Unsubscribe from event when object is disabled
+	{
+		inputManager.OnStartTouch -= OnTouch;
+	}
+
+	private void Update()
 	{
 		enemyObject.transform.position -= new Vector3(0, movementSpeed * Time.deltaTime, 0);
 	}
 
-	void OnTouch(Vector2 position)
+	private void OnTouch(Vector2 position)
 	{
-		// Convert screen space to world space
 		Vector2 worldCoordinate = Camera.main.ScreenToWorldPoint(position);
 
-		foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+		Collider2D hitCollider = Physics2D.OverlapPoint(worldCoordinate, LayerMask.GetMask("Enemy"));
+
+		if (hitCollider != null)
 		{
-			bool overlaps = enemy.GetComponent<Collider2D>().OverlapPoint(worldCoordinate);
-			
-			if (overlaps) {
-				Destroy(enemy);
-				break;
-
-			}
-
+			Destroy(hitCollider.gameObject);
 		}
-
-
 	}
 }

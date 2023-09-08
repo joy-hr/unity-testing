@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6958132290178481965}
   - component: {fileID: 9097986688791654068}
   - component: {fileID: 6222272134441878651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TapEnemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2604326dfad90428cc7dd111153e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 6222272134441878651}
   movementSpeed: 5
 --- !u!58 &6222272134441878651
 CircleCollider2D:
