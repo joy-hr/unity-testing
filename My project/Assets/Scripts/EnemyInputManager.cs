@@ -1,46 +1,30 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 [DefaultExecutionOrder(-1)]
 public class EnemyInputManager : MonoBehaviourSingleton<EnemyInputManager>
 {
-    public delegate void StartTouchEvent(Vector2 position);
-    public event StartTouchEvent OnStartTouch;
-    public delegate void EndTouchEvent(Vector2 position);
-    public event EndTouchEvent OnEndTouch;
+    public event Action<Vector2> OnStartTouch;
+    public event Action<Vector2> OnEndTouch;
 
-    TouchControls touchControls;
+    private TouchControls touchControls;
 
-    void Awake()
+    private void Awake()
     {
         touchControls = new TouchControls();
-    }
-
-    void OnEnable()
-    {
+        touchControls.Touch.Tap.started += StartTouch;
+        touchControls.Touch.Tap.canceled += EndTouch;
         touchControls.Enable();
     }
 
-    void OnDisable()
+    private void StartTouch(InputAction.CallbackContext context)
     {
-        touchControls.Disable();
+        OnStartTouch?.Invoke(context.ReadValue<Vector2>());
     }
 
-    void Start()
+    private void EndTouch(InputAction.CallbackContext context)
     {
-        touchControls.Touch.Tap.started += StartTouch;
-        touchControls.Touch.Tap.canceled += EndTouch;
-    }
-
-    void StartTouch(InputAction.CallbackContext context)
-    {
-        if (OnStartTouch != null)
-            OnStartTouch(context.ReadValue<Vector2>());
-    }
-
-    void EndTouch(InputAction.CallbackContext context)
-    {
-        if (OnEndTouch != null)
-            OnEndTouch(context.ReadValue<Vector2>());
+        OnEndTouch?.Invoke(context.ReadValue<Vector2>());
     }
 }
