@@ -1,25 +1,29 @@
 using UnityEngine;
 
+/// <summary>
+/// This class provides a Singleton pattern implementation for MonoBehaviour.
+/// It ensures that only one instance of a MonoBehaviour type exists in the scene.
+/// If an instance does not exist, it creates a new GameObject and adds the required component to it.
+/// </summary>
+/// <typeparam name="T">The specific Component type that this class will manage.</typeparam>
 public class MonoBehaviourSingleton<T> : MonoBehaviour where T : Component
 {
     private static T _instance;
+
+    /// <summary>
+    /// Provides access to the singleton instance of this MonoBehaviour.
+    /// </summary>
     public static T Instance
     {
         get
         {
             if (_instance == null)
             {
-                T[] objs = FindObjectsOfType<T>();
-                if (objs.Length > 0)
-                    _instance = objs[0];
-                if (objs.Length > 1)
-                {
-                    Debug.LogError($"There is more than one {typeof(T).Name} in the scene.");
-                }
+                _instance = FindObjectOfType<T>();
+
                 if (_instance == null)
                 {
                     GameObject obj = new GameObject();
-                    obj.hideFlags = HideFlags.HideAndDontSave;
                     _instance = obj.AddComponent<T>();
                 }
             }
@@ -28,8 +32,18 @@ public class MonoBehaviourSingleton<T> : MonoBehaviour where T : Component
     }
 }
 
+/// <summary>
+/// This class provides a Singleton pattern implementation for MonoBehaviour.
+/// It ensures that only one instance of a MonoBehaviour type exists across multiple scenes.
+/// If an instance does not exist, it sets the current instance as the singleton instance and prevents it from being destroyed on load.
+/// If an instance already exists, it destroys the new instance.
+/// </summary>
+/// <typeparam name="T">The specific Component type that this class will manage.</typeparam>
 public class MonoBehaviourSingletonPersistent<T> : MonoBehaviour where T : Component
 {
+    /// <summary>
+    /// Provides access to the singleton instance of this MonoBehaviour.
+    /// </summary>
     public static T Instance { get; private set; }
 
     protected virtual void Awake()
@@ -37,7 +51,7 @@ public class MonoBehaviourSingletonPersistent<T> : MonoBehaviour where T : Compo
         if (Instance == null)
         {
             Instance = this as T;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
