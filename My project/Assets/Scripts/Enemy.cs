@@ -11,6 +11,11 @@ public abstract class Enemy : MonoBehaviour
 		inputManager = EnemyInputManager.Instance;
 	}
 
+	void OnBecameInvisible()
+	{
+		Destroy(gameObject);
+	}
+
 	protected Action<Vector2> InvokeIfCollided(Action<Vector2> action)
 	{
 		return position =>
@@ -22,5 +27,13 @@ public abstract class Enemy : MonoBehaviour
 			if (hitCollider != null && gameObject != null && hitCollider.gameObject == gameObject)
 				action(position);
 		};
+	}
+
+	protected bool Overlaps(Vector2 position)
+	{
+		Vector2 worldCoordinate = Camera.main.ScreenToWorldPoint(position);
+		Collider2D hitCollider = Physics2D.OverlapPoint(worldCoordinate, LayerMask.GetMask("Enemy"));
+
+		return hitCollider != null && gameObject == hitCollider.gameObject;
 	}
 }
