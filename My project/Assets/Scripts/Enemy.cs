@@ -6,6 +6,9 @@ public abstract class Enemy : MonoBehaviour
 	protected EnemyInputManager inputManager;
 	protected GameObject enemyObject;
 
+	[Min(0)]
+    public float movementSpeed = 8f;
+
 	void Awake()
 	{
 		inputManager = EnemyInputManager.Instance;
@@ -16,18 +19,15 @@ public abstract class Enemy : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	protected Action<Vector2> InvokeIfCollided(Action<Vector2> action)
-	{
-		return position =>
-		{
-			Vector2 worldCoordinate = Camera.main.ScreenToWorldPoint(position);
+	private void Update()
+    {
+        MoveDown();
+    }
 
-			Collider2D hitCollider = Physics2D.OverlapPoint(worldCoordinate, LayerMask.GetMask("Enemy"));
-
-			if (hitCollider != null && gameObject != null && hitCollider.gameObject == gameObject)
-				action(position);
-		};
-	}
+    private void MoveDown()
+    {
+        transform.position -= new Vector3(0, movementSpeed * Time.deltaTime, 0);
+    }
 
 	protected bool Overlaps(Vector2 position)
 	{

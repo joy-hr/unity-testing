@@ -14,8 +14,10 @@ public class EnemyInputManager : MonoBehaviourSingleton<EnemyInputManager>
     {
         touchControls = new TouchControls();
         touchControls.Touch.Tap.started += StartTouch;
+
         touchControls.Enable();
     }
+
 
     private void StartTouch(InputAction.CallbackContext context)
     {

@@ -245,10 +245,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnIntervalSeconds: 1
-  GapOffset: 100
+  GapOffset: 95
   Columns: 4
   EnemyPrefabs:
   - {fileID: 3376205976426721436, guid: a1ccc097d9c3fcb4493eac869caf1107, type: 3}
+  - {fileID: 1916732893397102739, guid: 4fa1aaff5693f0b468cc56f4df68572a, type: 3}
 --- !u!4 &735502219
 Transform:
   m_ObjectHideFlags: 0
