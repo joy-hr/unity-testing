@@ -38,9 +38,26 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+
+        // Calculate the total width of all columns and gaps
+        float totalWidth = (Columns - 1) * GapOffset;
+
+        // Calculate the starting x position
+        float startX = screenPosition.x - totalWidth / 2;
+
+        for (int i = 0; i < Columns; i++)
+        {
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(startX + i * GapOffset, screenPosition.y, screenPosition.z));
+            Gizmos.DrawSphere(worldPosition, 0.5f);
+        }
+    }
+
     private Vector3 GetRandomWorldPosition(Vector3 screenPosition)
     {
-        float randomXOffset = (Random.Range(0, Columns) - Columns / 2f) * GapOffset;
+        float randomXOffset = (Random.Range(-Columns / 2, Columns / 2) + 0.5f) * GapOffset;
         return Camera.main.ScreenToWorldPoint(new Vector3(screenPosition.x + randomXOffset, screenPosition.y, screenPosition.z));
     }
 
@@ -48,4 +65,6 @@ public class EnemySpawner : MonoBehaviour
     {
         return EnemyPrefabs[Random.Range(0, EnemyPrefabs.Length)];
     }
+
+
 }
