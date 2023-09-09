@@ -14,17 +14,11 @@ public class EnemyInputManager : MonoBehaviourSingleton<EnemyInputManager>
     {
         touchControls = new TouchControls();
         touchControls.Touch.Tap.started += StartTouch;
-        touchControls.Touch.Tap.canceled += EndTouch;
         touchControls.Enable();
     }
 
     private void StartTouch(InputAction.CallbackContext context)
     {
         OnStartTouch?.Invoke(context.ReadValue<Vector2>());
-    }
-
-    private void EndTouch(InputAction.CallbackContext context)
-    {
-        OnEndTouch?.Invoke(context.ReadValue<Vector2>());
     }
 }

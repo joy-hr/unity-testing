@@ -24,8 +24,8 @@ public class EnemySpawner : MonoBehaviour
             _spawnTimer = 0;
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position);
             Vector3 worldPosition = GetRandomWorldPosition(screenPosition);
-            GameObject enemy = GetRandomEnemyPrefab();
-            Instantiate(enemy, worldPosition, Quaternion.identity);
+            GameObject enemyPrefab = GetRandomEnemyPrefab();
+            GameObject enemy = Instantiate(enemyPrefab, worldPosition, Quaternion.identity);
         }
     }
 

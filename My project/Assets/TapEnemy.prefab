@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5867603482809869143}
   - component: {fileID: 6958132290178481965}
-  - component: {fileID: 9097986688791654068}
   - component: {fileID: 6222272134441878651}
-  m_Layer: 6
+  - component: {fileID: 6759918272219952845}
+  m_Layer: 3
   m_Name: TapEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,19 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9097986688791654068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3376205976426721436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2604326dfad90428cc7dd111153e19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
 --- !u!58 &6222272134441878651
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -134,3 +121,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3.09
+--- !u!114 &6759918272219952845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376205976426721436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2604326dfad90428cc7dd111153e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 8

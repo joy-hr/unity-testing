@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 public abstract class Enemy : MonoBehaviour
 {
@@ -11,8 +11,16 @@ public abstract class Enemy : MonoBehaviour
 		inputManager = EnemyInputManager.Instance;
 	}
 
-	void Start()
+	protected Action<Vector2> InvokeIfCollided(Action<Vector2> action)
 	{
-		enemyObject = gameObject;
+		return position =>
+		{
+			Vector2 worldCoordinate = Camera.main.ScreenToWorldPoint(position);
+
+			Collider2D hitCollider = Physics2D.OverlapPoint(worldCoordinate, LayerMask.GetMask("Enemy"));
+
+			if (hitCollider != null && gameObject != null && hitCollider.gameObject == gameObject)
+				action(position);
+		};
 	}
 }
