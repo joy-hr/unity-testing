@@ -35,6 +35,24 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TouchPosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""fc06a2d4-062e-4638-9927-11a2fcc69488"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""040bc469-4090-4eed-9633-9b4fef89045b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,6 +88,28 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
                     ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48b7ec6b-57f5-4410-9e75-5ec0d1df8e18"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TouchPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9857fdd-9268-4854-bd2a-898ad8ebe98a"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -79,6 +119,8 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
         // Touch
         m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
         m_Touch_Tap = m_Touch.FindAction("Tap", throwIfNotFound: true);
+        m_Touch_TouchPosition = m_Touch.FindAction("TouchPosition", throwIfNotFound: true);
+        m_Touch_Newaction = m_Touch.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,11 +183,15 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Touch;
     private List<ITouchActions> m_TouchActionsCallbackInterfaces = new List<ITouchActions>();
     private readonly InputAction m_Touch_Tap;
+    private readonly InputAction m_Touch_TouchPosition;
+    private readonly InputAction m_Touch_Newaction;
     public struct TouchActions
     {
         private @TouchControls m_Wrapper;
         public TouchActions(@TouchControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Tap => m_Wrapper.m_Touch_Tap;
+        public InputAction @TouchPosition => m_Wrapper.m_Touch_TouchPosition;
+        public InputAction @Newaction => m_Wrapper.m_Touch_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Touch; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,6 +204,12 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
             @Tap.started += instance.OnTap;
             @Tap.performed += instance.OnTap;
             @Tap.canceled += instance.OnTap;
+            @TouchPosition.started += instance.OnTouchPosition;
+            @TouchPosition.performed += instance.OnTouchPosition;
+            @TouchPosition.canceled += instance.OnTouchPosition;
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
         }
 
         private void UnregisterCallbacks(ITouchActions instance)
@@ -165,6 +217,12 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
             @Tap.started -= instance.OnTap;
             @Tap.performed -= instance.OnTap;
             @Tap.canceled -= instance.OnTap;
+            @TouchPosition.started -= instance.OnTouchPosition;
+            @TouchPosition.performed -= instance.OnTouchPosition;
+            @TouchPosition.canceled -= instance.OnTouchPosition;
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
         }
 
         public void RemoveCallbacks(ITouchActions instance)
@@ -185,5 +243,7 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
     public interface ITouchActions
     {
         void OnTap(InputAction.CallbackContext context);
+        void OnTouchPosition(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }
