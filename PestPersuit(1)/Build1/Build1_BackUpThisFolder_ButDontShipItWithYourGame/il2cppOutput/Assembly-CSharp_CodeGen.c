@@ -1,0 +1,149 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void BottomColliderScript_OnTriggerEnter2D_m6160301756DF2E8B3FCC2E741C6BCE310F3AF9AB (void);
+extern void BottomColliderScript__ctor_mE29C647905A359B6DF165EF61D3B4B99F26806B7 (void);
+extern void CircleClickHandler_Update_mA49815267D5638EC11554158A81778F238CEDB6C (void);
+extern void CircleClickHandler__ctor_m469E9BA95A97AF82B808368046FA0F746C2598E1 (void);
+extern void CircleSpawner_Start_m1D07151B48568412B5545DE9AA41E345E840386E (void);
+extern void CircleSpawner_SpawnCircles_mE029864355BB8D6EBF0E7402CB1792B1E68CC1CA (void);
+extern void CircleSpawner__ctor_m3FA17BA03F2A825A91504F42C2FACC25E534CC9C (void);
+extern void U3CSpawnCirclesU3Ed__6__ctor_mE733B3804BDCA79E078588DBC9E49160FEF27838 (void);
+extern void U3CSpawnCirclesU3Ed__6_System_IDisposable_Dispose_m9215DCE13F27A77EFA7CF94DE89BC9A91ECC1F5F (void);
+extern void U3CSpawnCirclesU3Ed__6_MoveNext_mCEBCC1E68B2B618BCDF620AAD14E2EBC7C7AF015 (void);
+extern void U3CSpawnCirclesU3Ed__6_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m20F708E26EDF76AEB4068FC5E6A397225FC059F2 (void);
+extern void U3CSpawnCirclesU3Ed__6_System_Collections_IEnumerator_Reset_m6C7928F579C80550DDBC989E28DC36FDBAB6A57D (void);
+extern void U3CSpawnCirclesU3Ed__6_System_Collections_IEnumerator_get_Current_m944C0C62869CA10033927F65F0EF87A47B25E0DD (void);
+extern void HealthManager_Start_mDED1A83AF5E9BFB2DB9869B52C4C9D64039725AD (void);
+extern void HealthManager_LoseHealth_m71817A8B11C6549742BC8A13F924E978A4B24B60 (void);
+extern void HealthManager_Updatehealths_mCFAD681862F45EE5ED54CC958764BD7CAD9556A5 (void);
+extern void HealthManager__ctor_mB388E33873161D61C1F4188A9E6A6C3B41D96A5F (void);
+extern void HomeButton_GoHome_mFDADA978D59292AD84E9D943D226D931EC7BF2CF (void);
+extern void HomeButton__ctor_m3F8B7A08E900FBEA261080C2BB164BDCCB902107 (void);
+extern void LevelSelector_SelectLevel1_mD9D156A3AF0C6E423D816033B0F4E667E4C84751 (void);
+extern void LevelSelector__ctor_m69FE81306DA2BBC464EBD43F699A0CFCE2FCFE33 (void);
+extern void MainMenu_PlayGame_mEC2DA4274CDD4D658AE27480E2C70C6049A496B5 (void);
+extern void MainMenu__ctor_m8209CEC1D907C87A96D777961F4D0536E6E948DD (void);
+extern void SquareClickHandler_Update_m3810A91AE32CA2FB6D66160C207372AD078368D5 (void);
+extern void SquareClickHandler__ctor_m735F9AAC94A292349714BFE5E262997385896C5F (void);
+extern void SquareSpawner_Start_mF79A6D3C8EE2F96C6A55B47743FF9631312F9AFE (void);
+extern void SquareSpawner_SpawnSquares_mBB6956B60ACFE3F784062E08BB7D3669443C919E (void);
+extern void SquareSpawner__ctor_mCA6AC102EEF23DB0227FA7FA29B80F2863B19189 (void);
+extern void U3CSpawnSquaresU3Ed__6__ctor_mB0C2FDA01419DA0BCCEA8B40D4F80FCAF4632966 (void);
+extern void U3CSpawnSquaresU3Ed__6_System_IDisposable_Dispose_mA977447CA9C42EAB95BEC0FCF04F411022911091 (void);
+extern void U3CSpawnSquaresU3Ed__6_MoveNext_mF450610C221159956BFF1572554DF2BDF93F3E62 (void);
+extern void U3CSpawnSquaresU3Ed__6_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m7584F6040BE56DE11B01187151D7F7745B77BAE7 (void);
+extern void U3CSpawnSquaresU3Ed__6_System_Collections_IEnumerator_Reset_m79E2E295A87437E4A92D0657819B1ADAEB4D350F (void);
+extern void U3CSpawnSquaresU3Ed__6_System_Collections_IEnumerator_get_Current_m6DB366202181BC47861BC2E7FC456718881CBF9F (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
+static Il2CppMethodPointer s_methodPointers[36] = 
+{
+	BottomColliderScript_OnTriggerEnter2D_m6160301756DF2E8B3FCC2E741C6BCE310F3AF9AB,
+	BottomColliderScript__ctor_mE29C647905A359B6DF165EF61D3B4B99F26806B7,
+	CircleClickHandler_Update_mA49815267D5638EC11554158A81778F238CEDB6C,
+	CircleClickHandler__ctor_m469E9BA95A97AF82B808368046FA0F746C2598E1,
+	CircleSpawner_Start_m1D07151B48568412B5545DE9AA41E345E840386E,
+	CircleSpawner_SpawnCircles_mE029864355BB8D6EBF0E7402CB1792B1E68CC1CA,
+	CircleSpawner__ctor_m3FA17BA03F2A825A91504F42C2FACC25E534CC9C,
+	U3CSpawnCirclesU3Ed__6__ctor_mE733B3804BDCA79E078588DBC9E49160FEF27838,
+	U3CSpawnCirclesU3Ed__6_System_IDisposable_Dispose_m9215DCE13F27A77EFA7CF94DE89BC9A91ECC1F5F,
+	U3CSpawnCirclesU3Ed__6_MoveNext_mCEBCC1E68B2B618BCDF620AAD14E2EBC7C7AF015,
+	U3CSpawnCirclesU3Ed__6_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m20F708E26EDF76AEB4068FC5E6A397225FC059F2,
+	U3CSpawnCirclesU3Ed__6_System_Collections_IEnumerator_Reset_m6C7928F579C80550DDBC989E28DC36FDBAB6A57D,
+	U3CSpawnCirclesU3Ed__6_System_Collections_IEnumerator_get_Current_m944C0C62869CA10033927F65F0EF87A47B25E0DD,
+	HealthManager_Start_mDED1A83AF5E9BFB2DB9869B52C4C9D64039725AD,
+	HealthManager_LoseHealth_m71817A8B11C6549742BC8A13F924E978A4B24B60,
+	HealthManager_Updatehealths_mCFAD681862F45EE5ED54CC958764BD7CAD9556A5,
+	HealthManager__ctor_mB388E33873161D61C1F4188A9E6A6C3B41D96A5F,
+	HomeButton_GoHome_mFDADA978D59292AD84E9D943D226D931EC7BF2CF,
+	HomeButton__ctor_m3F8B7A08E900FBEA261080C2BB164BDCCB902107,
+	LevelSelector_SelectLevel1_mD9D156A3AF0C6E423D816033B0F4E667E4C84751,
+	LevelSelector__ctor_m69FE81306DA2BBC464EBD43F699A0CFCE2FCFE33,
+	MainMenu_PlayGame_mEC2DA4274CDD4D658AE27480E2C70C6049A496B5,
+	MainMenu__ctor_m8209CEC1D907C87A96D777961F4D0536E6E948DD,
+	SquareClickHandler_Update_m3810A91AE32CA2FB6D66160C207372AD078368D5,
+	SquareClickHandler__ctor_m735F9AAC94A292349714BFE5E262997385896C5F,
+	SquareSpawner_Start_mF79A6D3C8EE2F96C6A55B47743FF9631312F9AFE,
+	SquareSpawner_SpawnSquares_mBB6956B60ACFE3F784062E08BB7D3669443C919E,
+	SquareSpawner__ctor_mCA6AC102EEF23DB0227FA7FA29B80F2863B19189,
+	U3CSpawnSquaresU3Ed__6__ctor_mB0C2FDA01419DA0BCCEA8B40D4F80FCAF4632966,
+	U3CSpawnSquaresU3Ed__6_System_IDisposable_Dispose_mA977447CA9C42EAB95BEC0FCF04F411022911091,
+	U3CSpawnSquaresU3Ed__6_MoveNext_mF450610C221159956BFF1572554DF2BDF93F3E62,
+	U3CSpawnSquaresU3Ed__6_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m7584F6040BE56DE11B01187151D7F7745B77BAE7,
+	U3CSpawnSquaresU3Ed__6_System_Collections_IEnumerator_Reset_m79E2E295A87437E4A92D0657819B1ADAEB4D350F,
+	U3CSpawnSquaresU3Ed__6_System_Collections_IEnumerator_get_Current_m6DB366202181BC47861BC2E7FC456718881CBF9F,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
+};
+static const int32_t s_InvokerIndices[36] = 
+{
+	4193,
+	5241,
+	5241,
+	5241,
+	5241,
+	5136,
+	5241,
+	4166,
+	5241,
+	5060,
+	5136,
+	5241,
+	5136,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5241,
+	5136,
+	5241,
+	4166,
+	5241,
+	5060,
+	5136,
+	5241,
+	5136,
+	10389,
+	5241,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
+const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
+{
+	"Assembly-CSharp.dll",
+	36,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
